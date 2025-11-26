@@ -7,9 +7,10 @@ spec:
   project: default
 
   source:
-    path: demo-app
     repoURL: "https://github.com/phidvss55/test-infra.git"
     targetRevision: HEAD
+    path: demo-app
+
   destination:
     name: ""
     namespace: demo-app
