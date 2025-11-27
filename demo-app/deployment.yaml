@@ -13,22 +13,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
-  labels:
-    app: demo-app
+  name: myapp
+  # labels:
+  #   app: demo-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: demo-app
+      app: myapp
   template:
     metadata:
       labels:
-        app: demo-app
+        app: myapp
     spec:
       containers:
-        - name: demo-app
-          image: phidinh/test-circle-ci:v0.0.1
+        - name: myapp
+          image: phidinh/test-circle-ci:v0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

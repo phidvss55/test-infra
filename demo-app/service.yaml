@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo-app-service
+  name: myapp-service
 spec:
   selector:
-    app: demo-app
+    app: myapp
   # type: LoadBalancer
   ports:
     - name: http
