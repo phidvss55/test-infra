@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-app-deployment
+  labels:
+    app: client-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: client-app
+  template:
+    metadata:
+      labels:
+        app: client-app
+    spec:
+      containers:
+        - name: client-app-container
+          image: phidinh/client-next:latest
+          env:
+            - name: HOSTNAME
+              value: "0.0.0.0"
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5

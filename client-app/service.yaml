@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-app-service
+spec:
+  selector:
+    app: client-app
+  # type: LoadBalancer
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      # protocol: TCP
+      targetPort: 3000
+      nodePort: 31110

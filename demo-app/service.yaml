@@ -5,9 +5,8 @@ metadata:
 spec:
   selector:
     app: myapp
-  # type: LoadBalancer
   ports:
     - name: http
-      port: 3000
+      port: 8080
       protocol: TCP
-      targetPort: 3000
+      targetPort: 5000
