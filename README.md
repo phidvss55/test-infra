@@ -21,7 +21,7 @@ E[Kubernetes]
 
 ---
 
-Start argocd local
+### Start argocd local
 
 ```bash
 # create ns
@@ -32,5 +32,13 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 # get credentials
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+```
+
+---
+
+### Access to Pod
+
+```bash
 
 ```

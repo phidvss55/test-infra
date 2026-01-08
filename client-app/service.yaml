@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     app: client-app
-  type: LoadBalancer
-  # type: NodePort
+  # type: LoadBalancer
+  type: NodePort
   ports:
     - name: http
       port: 3000
-      # protocol: TCP
-      targetPort: 3000
-      nodePort: 31110
+      protocol: TCP
+      targetPort: 80
+      nodePort: 30100

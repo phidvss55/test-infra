@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: backend-app-svc
 spec:
-  # type: NodePort
+  type: NodePort
   selector:
     app: backend-app
   ports:
     - name: http
       port: 8080
-      protocol: TCP
+      nodePort: 31110
       targetPort: 5000
+      protocol: TCP
