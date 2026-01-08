@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/part-of: argocd
+  name: argocd-server
+  namespace: argocd
+spec:
+  ports:
+    - name: http
+      port: 80
+      nodePort: 32073
+      protocol: TCP
+      targetPort: 8080
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 32074
+  selector:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server
+    app.kubernetes.io/part-of: argocd
+  type: NodePort
+---
+apiVersion: v1
+kind: ConfigMap
+data:
+  argocd-cmd-params-cmd: "argocd-cmd-params-cmd"
+  server.insecure: "true"
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cmd-params-cmd
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cmd-params-cmd
+  namespace: argocd

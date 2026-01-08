@@ -1,34 +1,22 @@
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: demo-app-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteMany
-#   storageClassName: longhorn
-#   resources:
-#     requests:
-#       storage: 100Mi
-# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
-  # labels:
-  #   app: demo-app
+  name: backend-app
+  labels:
+    app: my-backend-demonstration-description
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: myapp
+      app: backend-app
   template:
     metadata:
       labels:
-        app: myapp
+        app: backend-app
     spec:
       containers:
-        - name: myapp
-          image: phidinh/test-circle-ci:v0.0.2
+        - name: backend-app-container
+          image: phidinh/test-circle-ci:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
