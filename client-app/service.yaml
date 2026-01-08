@@ -4,8 +4,7 @@ metadata:
   name: client-app-service
 spec:
   selector:
-    app: client-app
-  # type: LoadBalancer
+    app: frontend-app
   type: NodePort
   ports:
     - name: http
