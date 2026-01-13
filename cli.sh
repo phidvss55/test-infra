@@ -8,6 +8,7 @@ NC='\033[0m'
 
 usage() {
     echo -e "${YELLOW}Usage:${NC}"
+    echo "  $0 get-argocd-pwd              - Get initial admin password"
     echo "  $0 decode <base64-string>           - Decode a base64 string"
     echo "  $0 start-argocd                     - Start ArgoCD"
     echo "  $0 forward-argocd [local-port]      - Forward ArgoCD server port (default: 8080)"
@@ -89,8 +90,15 @@ forward_argocd() {
     kubectl port-forward svc/argocd-server -n argocd ${LOCAL_PORT}:443
 }
 
+get_argocd_password() {
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d
+}
+
 # Main script logic
 case "$1" in
+    get-argocd-pwd)
+        get_argocd_password
+        ;;
     decode)
         decode_base64 "$2"
         ;;

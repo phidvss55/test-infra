@@ -4,6 +4,7 @@ metadata:
   name: backend-app
   labels:
     app: my-backend-demonstration-description
+  namespace: demo-app
 spec:
   replicas: 2
   selector:
