@@ -15,6 +15,7 @@ usage() {
     echo "  $0 help                             - Show this help message"
     echo ""
     echo -e "${YELLOW}Examples:${NC}"
+    echo "  $0 get-argocd-pwd"
     echo "  $0 decode SGVsbG8gV29ybGQ="
     echo "  $0 start-argocd"
     echo "  $0 forward-argocd"
