@@ -7,20 +7,22 @@ metadata:
   namespace: demo-app
 
 spec:
-  securityContext:
-    runAsUser: 0
   replicas: 2
   selector:
     matchLabels:
       app: frontend-app
+
   template:
     metadata:
       labels:
         app: frontend-app
     spec:
+      securityContext:
+        runAsUser: 0
+
       containers:
         - name: frontend-app-container
-          image: phidinh/vue-app:v1
+          image: phidinh/vue-app:v2
           env:
             - name: HOSTNAME
               value: "0.0.0.0"
@@ -33,9 +35,13 @@ spec:
               port: 3000
             initialDelaySeconds: 30
             periodSeconds: 10
+
           readinessProbe:
             httpGet:
               path: /
               port: 3000
             initialDelaySeconds: 10
             periodSeconds: 5
+
+          securityContext:
+            allowPrivilegeEscalation: false
