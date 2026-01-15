@@ -23,24 +23,21 @@ spec:
       containers:
         - name: frontend-app-container
           image: phidinh/vue-app:v2
-          env:
-            - name: HOSTNAME
-              value: "0.0.0.0"
           ports:
             - containerPort: 80
 
           livenessProbe:
             httpGet:
               path: /
-              port: 3000
-            initialDelaySeconds: 30
+              port: 80
+            initialDelaySeconds: 10
             periodSeconds: 10
 
           readinessProbe:
             httpGet:
               path: /
-              port: 3000
-            initialDelaySeconds: 10
+              port: 80
+            initialDelaySeconds: 5
             periodSeconds: 5
 
           securityContext:
