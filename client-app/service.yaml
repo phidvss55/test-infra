@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: client-app-service
 spec:
+  type: NodePort
   selector:
     app: frontend-app
-  type: NodePort
   ports:
     - port: 3000
       targetPort: 80
-      nodePort: 31988
+      nodePort: 30080

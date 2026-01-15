@@ -5,6 +5,7 @@ metadata:
   labels:
     app: vue-application-deployment-description-long-here
   namespace: demo-app
+
 spec:
   replicas: 2
   selector:
@@ -23,6 +24,7 @@ spec:
               value: "0.0.0.0"
           ports:
             - containerPort: 80
+
           livenessProbe:
             httpGet:
               path: /
