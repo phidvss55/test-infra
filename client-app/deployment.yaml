@@ -7,6 +7,8 @@ metadata:
   namespace: demo-app
 
 spec:
+  securityContext:
+    runAsUser: 0
   replicas: 2
   selector:
     matchLabels:
